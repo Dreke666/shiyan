@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.StaffSystem.dao.StaffDao">
+   <select id="login" parameterType="com.StaffSystem.bean.Staff" resultType="com.StaffSystem.bean.Staff">
+    select  * from staff where staffcode=#{staffcode} and password=#{password}
+   </select>
+    <select id="selectStaffByPage" resultType="com.StaffSystem.bean.Staff">
+        select  * from staff
+    </select>
+    <delete id="deleteStaffByStaff_id" parameterType="int">
+        delete from staff where staff_id=#{staff_id}
+    </delete>
+    <insert id="addStaff" parameterType="com.StaffSystem.bean.Staff" >
+        INSERT INTO staff VALUES(NULL,#{staffcode},#{name},'123456',#{phone},#{email},#{address},'1',#{depart_name},'1',#{position},'1','admin',#{add_time},'2',#{remark})
+    </insert>
+    <select id="selectStaffByStaff_id" parameterType="int" resultType="com.StaffSystem.bean.Staff">
+          select  * from staff where staff_id=#{staff_id}
+    </select>
+    <update id="updateStaff" parameterType="com.StaffSystem.bean.Staff">
+        update staff set staffcode=#{staffcode},name=#{name},phone=#{phone},email=#{email},address=#{address},depart_name=#{depart_name},position=#{position},remark=#{remark} where  staff_id=#{staff_id}
+    </update>
+</mapper>
